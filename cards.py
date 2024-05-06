@@ -4,7 +4,7 @@ class Cards():
         self.colors = ["Red","Blue","Green","Yellow"] 
 
     def generate(self):
-        self.__generateComodines()
+        self.generateComodines()
         for c in self.colors:
             for a in range(10):
                 if a!= 0:
@@ -17,7 +17,7 @@ class Cards():
 
 
 
-    def __generateComodines(self):
+    def generateComodines(self):
         wildcards= ["Return","Intermission","+ 2"]
         for color in self.colors:
             for c in wildcards:

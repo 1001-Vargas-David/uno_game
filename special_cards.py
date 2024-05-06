@@ -58,7 +58,7 @@ class WildCards():
         else:
             colors = ["Red","Blue","Green","Yellow"]
             random = randint(1,4)
-            chosenColor = colors[random]
+            chosenColor = colors[random-1]
 
         return chosenColor
 
@@ -84,14 +84,14 @@ class WildCards():
     def take4(self,player,nextPlayer,validate,cardPack):
         if validate:
             print("{} you have taken 4 cards \n".format(nextPlayer.name))
-            for t in range(5):
+            for t in range(4):
                 cardPack.steal(nextPlayer)
 
             self.Skip(nextPlayer)
         else:
 
             print("{} you have taken 6 cards \n".format(player.name))
-            for t in range(7):
+            for t in range(6):
                 cardPack.steal(player)
 
         return ""
@@ -111,11 +111,5 @@ specials = WildCards()
 specials.generate()
 
 
-##test ####
-"""
-names = ["Juan","Marco","Lucas","Maria"]
-p = specials.affected(names,"Juan")
-print(specials.returnCard(names,p))
-"""
 
 

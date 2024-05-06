@@ -32,12 +32,44 @@ os.system("cls")
 from table import *
 
 
+while True:
+    try:
+        totalPlayers = int(input("How many players will participate?: "))
+        while  totalPlayers < 2 or totalPlayers > 10:
+            print("The number of players must be between 2 to 10.")
+            totalPlayers  = int(input("How many players will participate?: "))
+
+
+        players = []
+        for a in range(totalPlayers):
+            name = input("Player's name : ").capitalize()
+            player = Player(name)
+            players.append(player)
+
+        break 
+
+    except:
+        print("You entered a letter")
+
+board = Table()
+cardPack.handOut(players)
+board.repPlayers(players)
+roundStarted = True
+play = None
+
+
+
+board.rules()
+
+ready = input("Press any key to start: ")
+
+
 
 while True:
     for s in range(0,len(players)):
         if players[s].notOmmited and players[s].retired == "":
             if players[s].checkRetired(players):
-                print("{} has won this macth".format(players[s].name))
+                print("{} has won this match".format(players[s].name))
                 sys.exit()
 
                 
@@ -46,12 +78,16 @@ while True:
             board.repPlayers(players)
             if roundStarted:
                 print("Deck: {}".format(len(cardPack.deck)))
+                # table card is this 
                 card = board.initial(cardPack)
+                print('card is', card)
                 roundStarted = False
             
             else:
                 print("Deck: {}".format(len(cardPack.deck)))
                 board.repCard(card)
+                print('card is', card)
+
                 
             print("{} your hand is  :\n".format(players[s].name))
             players[s].showHand()
@@ -64,11 +100,13 @@ while True:
                 if roundStarted:
                     print("Deck: {}".format(len(cardPack.deck)))
                     card = board.initial(cardPack)
+                    print('card is', card)
                     roundStarted = False
             
                 else:
                     print("Deck: {}".format(len(cardPack.deck)))
                     board.repCard(card)
+                    print('card is', card)
 
                 print("{} your hand is :".format(players[s].name))
                 players[s].showHand()
@@ -86,6 +124,9 @@ while True:
 
 
                         play = players[s].playCard(option)
+                        for i in play:
+                            print(i)
+                            print(type(i))
                         
                         if play[0] == "+ 4" or play[0] == "Choose color":
                 

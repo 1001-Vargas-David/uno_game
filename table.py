@@ -24,14 +24,14 @@ class Table():
     def initial(self,cardPack):
         choose = randint(0,len(cardPack.deck)-1)
         check = cardPack.deck[choose]
-        while check[0] in ["+ 2","Return","Intermission","+ 4","Choose color"]:
+        print('check is ', check)
+        while  check in ["+ 2","Return","Intermission","+ 4","Choose color"]:
             choose = randint(0,len(cardPack.deck)-1)
             check = cardPack.deck[choose]
             
 
         print("In the table there is: \n{} \n".format(cardPack.deck[choose]) )
         return cardPack.deck[choose]
-        cardPack.deck.remove(cardPack.deck[choose])
 
 
     def rules(self):
@@ -46,17 +46,17 @@ class Table():
 
 
 
-board = Table()
-cardPack.handOut(players)
-board.repPlayers(players)
-roundStarted = True
-play = None
+# board = Table()
+# cardPack.handOut(players)
+# board.repPlayers(players)
+# roundStarted = True
+# play = None
 
 
 
 
 
 
-board.rules()
+# board.rules()
 
-ready = input("Press any key to start: ")
+# ready = input("Press any key to start: ")
