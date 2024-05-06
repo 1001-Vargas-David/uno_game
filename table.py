@@ -1,5 +1,6 @@
-from card_pack import  *
-from player import *
+from random import randint
+from card_pack import Deck
+from player import Player
 class Table():
     
     def repPlayers(self,players):
@@ -24,8 +25,7 @@ class Table():
     def initial(self,cardPack):
         choose = randint(0,len(cardPack.deck)-1)
         check = cardPack.deck[choose]
-        print('check is ', check)
-        while  check in ["+ 2","Return","Intermission","+ 4","Choose color"]:
+        while check in ["+ 2","Return","Intermission","+ 4","Choose color"]:
             choose = randint(0,len(cardPack.deck)-1)
             check = cardPack.deck[choose]
             

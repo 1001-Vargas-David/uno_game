@@ -1,6 +1,7 @@
 
-from cards import *
-from special_cards import *
+from random import randint
+from cards import Cards
+from special_cards import WildCards
 class Deck():
     def __init__(self):
         self.deck = []
@@ -29,8 +30,8 @@ class Deck():
 
 
 
-cardPack = Deck()
-cardList = [specials.list,commonCards.list]
-cardPack.fillDeck(cardList)
+# cardPack = Deck()
+# cardList = [specials.list,commonCards.list]
+# cardPack.fillDeck(cardList)
 
 

@@ -11,13 +11,13 @@ def menu(option):
 
     else:
         if option == "1":
-            os.system("cls")
+            os.system("clear")
             print("I'm Luis Rosario the developer of this project with which I've practiced Poo in my learning at the hands of the Cincinnatus Institute of Craftsmanship\n \n")
             print(".........Menu......... \n \nPress '2' to how to play \nPress '3' to exit\nPress any key to play \n........................ \n")
             return menu(input("What do you will to do?: "))
         
         elif option == "2":
-            os.system("cls")
+            os.system("clear")
             print("To play you just have to enter the number of their players and their names, Then in order each one must make his move the options that you have will appear on the screen and \nyou must choose one option and follow the rules that will appear at that time \n \n")
             print(".........Menu......... \n \nPress '1' to see the credits \nPress '3' to exit\nPress any key to play \n........................ \n")
             return menu(input("What do you will to do?: "))
@@ -27,9 +27,25 @@ def menu(option):
 
 
 menu(input("What do you will to do?: "))
-os.system("cls")
+os.system("clear")
 
-from table import *
+from table import Table
+from player import Player
+from special_cards import WildCards
+from card_pack import Deck
+from cards import Cards
+
+# specials = WildCards()
+# specials.generate()
+
+# commonCards = Cards()
+# commonCards.generate()
+
+
+# cardPack = Deck()
+# cardList = [specials.list,commonCards.list]
+# cardPack.fillDeck(cardList)
+
 
 
 while True:
@@ -50,6 +66,18 @@ while True:
 
     except:
         print("You entered a letter")
+
+
+specials = WildCards()
+specials.generate()
+
+commonCards = Cards()
+commonCards.generate()
+
+
+cardPack = Deck()
+cardList = [specials.list,commonCards.list]
+cardPack.fillDeck(cardList)
 
 board = Table()
 cardPack.handOut(players)
@@ -74,19 +102,17 @@ while True:
 
                 
             specials.reSkip(players)
-            os.system("cls")
+            os.system("clear")
             board.repPlayers(players)
             if roundStarted:
                 print("Deck: {}".format(len(cardPack.deck)))
                 # table card is this 
                 card = board.initial(cardPack)
-                print('card is', card)
                 roundStarted = False
             
             else:
                 print("Deck: {}".format(len(cardPack.deck)))
                 board.repCard(card)
-                print('card is', card)
 
                 
             print("{} your hand is  :\n".format(players[s].name))
@@ -95,19 +121,17 @@ while True:
             players[s].showOptions()
             desicion = input("What do you want to do?: ")
             while desicion not in ["q","r","w","e"]:
-                os.system("cls")
+                os.system("clear")
                 board.repPlayers(players)
                 if roundStarted:
                     print("Deck: {}".format(len(cardPack.deck)))
                     card = board.initial(cardPack)
-                    print('card is', card)
                     roundStarted = False
             
                 else:
                     print("Deck: {}".format(len(cardPack.deck)))
                     board.repCard(card)
-                    print('card is', card)
-
+    
                 print("{} your hand is :".format(players[s].name))
                 players[s].showHand()
                 players[s].showOptions()
@@ -124,9 +148,7 @@ while True:
 
 
                         play = players[s].playCard(option)
-                        for i in play:
-                            print(i)
-                            print(type(i))
+                        
                         
                         if play[0] == "+ 4" or play[0] == "Choose color":
                 
@@ -306,7 +328,7 @@ while True:
                 roundStarted = True
                 print("New round")
                 input("Press any key to continue: ")
-                os.system("cls")
+                os.system("clear")
 
 
 
