@@ -34,5 +34,5 @@ jobs:
       - name: Test with unittest
         run: |
           coverage run --omit=tests.py tests.py -b
-          coverage rport >> coverage_report.txt
+          coverage report >> coverage_report.txt
           
