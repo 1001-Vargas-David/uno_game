@@ -94,19 +94,7 @@ class testPlayer(unittest.TestCase):
         players[2].hand = hand
         self.player.addPoints(players, players[2], cardPack= deck)# fix 
         self.assertEqual(self.player.points, 2)
-
-    def test_player_restart_hand_func(self):
-        players = [Player('test0'), Player('test2')]
-        players.append(self.player)
-        
-        for i in players:
-            i.hand = [[0, 'Red'], [2, 'Blue']]
-
-        self.player.restartHand(players)
-    
-        for i in players:
-            self.assertEqual(self.player.hand, [])
-    
+ 
     def test_player_restart_hand_func(self):
         players = [Player('test0'), Player('test2')]
         players.append(self.player)

@@ -1,4 +1,9 @@
 import os,sys
+from table import Table
+from player import Player
+from special_cards import WildCards
+from card_pack import Deck
+from cards import Cards
 print(" ██╗   ██╗███╗   ██╗ ██████╗ \n ██║   ██║████╗  ██║██╔═══██╗ \n ██║   ██║██╔██╗ ██║██║   ██║ \n ██║   ██║██║╚██╗██║██║   ██║ \n ╚██████╔╝██║ ╚████║╚██████╔╝ \n ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ \n ")
 
 print(" It is a game that is played from 2 to 10 players \n as each player receives 7 cards to start. \n Your objective is to reach 500 points to defeat your teammates. \n  \n")
@@ -29,11 +34,11 @@ def menu(option):
 menu(input("What do you will to do?: "))
 os.system("clear")
 
-from table import Table
-from player import Player
-from special_cards import WildCards
-from card_pack import Deck
-from cards import Cards
+# from table import Table
+# from player import Player
+# from special_cards import WildCards
+# from card_pack import Deck
+# from cards import Cards
 
 # specials = WildCards()
 # specials.generate()
@@ -64,7 +69,7 @@ while True:
 
         break 
 
-    except:
+    except Exception:
         print("You entered a letter")
 
 
@@ -207,7 +212,7 @@ while True:
                             input("Press any key to continue: ")
                     
                         break
-                    except:
+                    except Exception:
                         print("you entered a letter")
                     
 
@@ -298,7 +303,7 @@ while True:
                         
                         break
 
-                    except:
+                    except Exception:
                         print("You entered a letter")
                 
 
