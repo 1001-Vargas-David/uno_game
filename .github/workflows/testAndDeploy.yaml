@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies-ruff linter
         run: |
           pip install ruff
-          ruff check . --fic
+          ruff check . --fix
       - name: Install dependencies-coverage
         run: |
           pip install coverage
