@@ -74,7 +74,9 @@ class testPlayer(unittest.TestCase):
         players[0].points = 1
         players[1].points = 500
         self.assertEqual(self.player.checkPoints(players=players), False)
-    
+
+
+    # integration tests for check points for the plaeyer using the cards numbers for points
     def test_player_addPoints_func(self):
         #generate cards
         cards = Cards()
@@ -150,7 +152,7 @@ class testPlayer(unittest.TestCase):
 class testWildCards(unittest.TestCase):
     def setUp(self):
         self.specialCards = WildCards()
-    
+
     def test_WildCards_init_func(self):
         self.assertEqual(self.specialCards.color, 'Black')
         self.assertEqual(self.specialCards.list, [])
@@ -159,6 +161,7 @@ class testWildCards(unittest.TestCase):
         self.specialCards.generate()
         self.assertEqual(self.specialCards.list, [['+ 4', 'Black'], ['+ 4', 'Black'], ['+ 4', 'Black'], ['+ 4', 'Black'], ['Choose color', 'Black'], ['Choose color', 'Black'], ['Choose color', 'Black'], ['Choose color', 'Black']])
     
+    # integration test for checking if the player hand has a wildcard, no wildcard in this case=
     def test_WildCards_noCard_func_with_no_wildcard(self):
         player = Player('test')
         cards = Cards()
@@ -170,6 +173,7 @@ class testWildCards(unittest.TestCase):
 
         self.assertEqual(self.specialCards.noCard(testDeckCard,player), True)
 
+    # integration test for checking if the player hand has a wildcard, one wildcard in player hand in this case
     def test_WildCards_noCard_func_with_wildcard(self):
         player = Player('test')
         self.specialCards.generate()
@@ -179,6 +183,7 @@ class testWildCards(unittest.TestCase):
 
         self.assertEqual(self.specialCards.noCard(wildcard,player), False)
 
+    # integration test for checking if the player hand has a wildcard, multiple wildcards in player hand in this case
     def test_WildCards_noCard_func_with_multiple_wildcard(self):
         player = Player('test')
         self.specialCards.generate()
@@ -225,7 +230,9 @@ class testWildCards(unittest.TestCase):
         self.assertTrue(self.specialCards.optionColor('9') in ["Red","Blue","Green","Yellow"])
         self.assertTrue(self.specialCards.optionColor('10') in ["Red","Blue","Green","Yellow"])
         self.assertTrue(self.specialCards.optionColor('100') in ["Red","Blue","Green","Yellow"])
-    
+
+
+    # integration test for checking wildcard class functionality for the checking if there is +2 card on the table, then the next player should get 2 more cards from deck
     def test_WildCards_take2_func(self):
 
         player = Player('test')
@@ -235,13 +242,17 @@ class testWildCards(unittest.TestCase):
         self.specialCards.generate()
         deck.fillDeck(cards.list + self.specialCards.list)
         length = len(deck.deck)
+        plen = len(player.hand)
 
         self.specialCards.take2(player,deck)
         newLength = len(deck.deck)
 
+        newPlen = len(player.hand)
+
+        self.assertEqual(plen + 2, newPlen)
         self.assertEqual(length - 2, newLength)
 
-    # integration test wildcard with players 
+    # integration test wildcard with players to skip a player who was affected by a wildcard, moving the next person in player list
     def test_WildCards_affected_func_in_and_out_of_bounds(self):
         test1 = Player('test1')
         test2 = Player('test2')
@@ -263,6 +274,8 @@ class testWildCards(unittest.TestCase):
         for p in players:
             self.assertEqual(p.notOmmited, True)
 
+    
+    # integration test for checking wildcard class functionality for the checking if there is +6 card on the table but not valid, then the current player should get 6 more cards from deck
     def test_WildCards_take4_func_with_valid_is_false(self):
 
         test1 = Player('test1')
@@ -275,13 +288,19 @@ class testWildCards(unittest.TestCase):
         self.specialCards.generate()
         deck.fillDeck(cards.list + self.specialCards.list)
         length = len(deck.deck)
+        plen = len(players[0].hand)
+
 
         self.specialCards.take4(players[0], players[1], False, deck)
         newLength = len(deck.deck)
+        newPLen = len(players[0].hand)
 
+
+        self.assertEqual(plen + 6, newPLen)
         self.assertEqual(length - 6, newLength)
 
-    def test_WildCards_take4_func_with_valid_is_false(self):
+    # integration test for checking wildcard class functionality for the checking if there is +4 card on the table and card is valid on table, then the next player should get 4 more cards from deck
+    def test_WildCards_take4_func_with_valid_is_True(self):
 
         test1 = Player('test1')
         test2 = Player('test2')
@@ -293,10 +312,14 @@ class testWildCards(unittest.TestCase):
         self.specialCards.generate()
         deck.fillDeck(cards.list + self.specialCards.list)
         length = len(deck.deck)
+        plen = len(players[1].hand)
+
 
         self.specialCards.take4(players[0], players[1], True, deck)
         newLength = len(deck.deck)
+        newPLen = len(players[1].hand)
 
+        self.assertEqual(plen + 4, newPLen)
         self.assertEqual(length - 4, newLength)
 
 # test table class
@@ -328,6 +351,7 @@ class testTable(unittest.TestCase):
 
         self.assertEqual(self.table.validateCard(playCard, wildcard), True)
 
+    # integration test for creating decka and adding the cards to the table, and providing the first card on the table from the deck.
     def test_Table_inital_func(self):
         cards = Cards()
         cards.generate()
