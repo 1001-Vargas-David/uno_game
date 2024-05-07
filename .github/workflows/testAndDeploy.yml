@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v4
         with: 
           context: .
-          file: 
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cs333-uno-game:latest
       
