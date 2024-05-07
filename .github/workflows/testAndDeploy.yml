@@ -38,6 +38,9 @@ jobs:
     needs: runUnitIntegrationTests
 
     steps:
+      - name: checkout the code
+        uses: actions/checkout@v3
+        
       - name: Login into DockerHub 
         uses: docker/login-action@v2
         with:
