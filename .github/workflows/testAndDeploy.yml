@@ -45,10 +45,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: build and push a Docker image to DockerHub 
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with: 
-          context: /DockerFileFolder
-          file: ./Dockerfile
+          context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cs333-uno-game:latest
       
