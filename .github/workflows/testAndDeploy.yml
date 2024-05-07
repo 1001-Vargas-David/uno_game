@@ -47,7 +47,8 @@ jobs:
       - name: build and push a Docker image to DockerHub 
         uses: docker/build-push-action@v4
         with: 
-          context: .
+          context: ./DockerFolder
+          file: ./DockerFolder/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cs333-uno-game:latest
       
