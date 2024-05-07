@@ -44,6 +44,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
+      - name: setup docker
+        uses: docker/setup-buildx-action@v2
       - name: build and push a Docker image to DockerHub 
         uses: docker/build-push-action@v4
         with: 
