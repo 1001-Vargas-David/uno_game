@@ -1,0 +1,9 @@
+Name               Stmts   Miss  Cover
+--------------------------------------
+card_pack.py          23      6    74%
+cards.py              20      0   100%
+player.py             52     13    75%
+special_cards.py      66      1    98%
+table.py              26      9    65%
+--------------------------------------
+TOTAL                187     29    84%
