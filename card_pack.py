@@ -30,8 +30,3 @@ class Deck():
 
 
 
-# cardPack = Deck()
-# cardList = [specials.list,commonCards.list]
-# cardPack.fillDeck(cardList)
-
-
