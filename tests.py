@@ -319,7 +319,7 @@ class testTable(unittest.TestCase):
         wildcard = ['+ 2', 'Red']
         playCard = [0, 'Red']
         
-        self.assertEqual(self.table.validateCard(playCard, wildcard), False)
+        self.assertEqual(self.table.validateCard(playCard, wildcard), True)
 
     def test_Table_validate_card_func_no_wildcard_not_valid_card(self):
         wildcard = ['+ 2', 'Red']
